@@ -1,5 +1,5 @@
 /**
- * @file 顶栏
+ * @file 顶栏（标题栏）
  * @author BenzLeung(https://github.com/BenzLeung)
  * @date 2017/5/16
  * Created by JetBrains PhpStorm.
@@ -8,12 +8,12 @@
  * each engineer has a duty to keep the code elegant
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import './TopBar.css';
 
-const TopBar = (title) => (
+const TopBar = ({titleName}) => (
     <div className="TopBar">
-        <h1>{title}</h1>
+        <h1>{titleName}</h1>
     </div>
 );
 

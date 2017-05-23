@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import TopBar from '../TopBar/TopBar';
+import ControlBar from '../ControlBar/ControlBar';
 
 const App = () => (
     <div className="App">
-        <TopBar />
+        <TopBar titleName="私人音乐盒"/>
+        <ControlBar />
     </div>
 );
 
