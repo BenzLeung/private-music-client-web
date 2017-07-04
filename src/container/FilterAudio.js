@@ -14,6 +14,7 @@ import Audio from '../presentation/Audio/Audio'
 
 const mapStateToProps = (state) => {
     return {
+        src: state.url,
         status: state.status,
         startTime: state.startTime
     };
@@ -21,6 +22,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     onProgress: progress
+    // todo: onEnded, onStateChanged
 };
 
 const FilterAudio = connect(

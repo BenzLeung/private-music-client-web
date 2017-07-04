@@ -1,13 +1,13 @@
 .TopBar {
-    height: 4rem;
+    height: 6rem;
     background: #333;
 }
 
 .TopBar h1 {
     color: #fcfcfc;
-    font-size: 1.5rem;
+    font-size: 3rem;
     text-align: center;
-    padding-top: 1.25rem;
+    padding-top: 1.5rem;
     margin: 0;
 }
 

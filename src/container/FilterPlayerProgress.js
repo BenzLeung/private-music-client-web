@@ -11,7 +11,7 @@
 
 import { connect } from 'react-redux'
 import { setTime } from '../redux/actions'
-import PlayerProgress from '../presentation/PlayerProgress/PlayerProgress'
+import PlayerProgress from '../presentation/ProgressSlider/ProgressSlider'
 
 const mapStateToProps = (state) => {
     return {

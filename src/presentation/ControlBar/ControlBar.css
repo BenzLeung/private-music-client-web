@@ -1,5 +1,5 @@
 .ControlBar {
-    height: 6rem;
+    height: 8rem;
     position: absolute;
     bottom: 0;
     background: #333;
@@ -7,13 +7,13 @@
 }
 
 .ControlBar .playCtrlColumn {
-    width: 20rem;
+    width: 28rem;
     float: left;
-    padding-top: 1.5rem;
+    padding-top: 3rem;
 }
 
 .ControlBar .playProgressColumn {
-    margin-left: 20rem;
-    margin-right: 10rem;
-    padding-top: 2rem;
+    margin-left: 28rem;
+    margin-right: 16rem;
+    padding-top: 3.2rem;
 }

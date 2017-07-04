@@ -11,18 +11,16 @@
 import React from 'react';
 import './ControlBar.css';
 
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
+import PlayerControl from '../../container/FilterPlayerControl';
+import ProgressSlider from '../../container/FilterPlayerProgress';
 
-const ControlBar = ({titleName}) => (
+const ControlBar = () => (
     <div className="ControlBar">
         <div className="playCtrlColumn">
-            <button>上一曲</button>
-            <button>播放</button>
-            <button>下一曲</button>
+            <PlayerControl />
         </div>
         <div className="playProgressColumn">
-            <Slider />
+            <ProgressSlider />
         </div>
     </div>
 );

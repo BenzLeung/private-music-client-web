@@ -9,6 +9,7 @@
  */
 
 const initState = {
+    'url' : 'testMusic/test.mp3',
     'status' : 'stop',
     'currentTime' : 0,
     'totalTime' : 0,
@@ -43,5 +44,7 @@ export default (state = initState, action) => {
                 return initState;
             }
             return state;
+
+            // todo: 列表控制
     }
 }
