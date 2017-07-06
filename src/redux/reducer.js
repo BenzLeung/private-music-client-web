@@ -9,7 +9,7 @@
  */
 
 const initState = {
-    'url' : 'testMusic/test.mp3',
+    'url' : 'testMusic/A-Little-Love.mp3',
     'status' : 'stop',
     'currentTime' : 0,
     'totalTime' : 0,

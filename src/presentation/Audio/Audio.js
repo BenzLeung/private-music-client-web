@@ -38,7 +38,7 @@ class Audio extends Component {
     }
 
     startTimer() {
-        if (!this.progressTimer) return;
+        if (this.progressTimer) return;
         this.progressTimer = setInterval(() => {
             this.handleProgress();
         }, 800);

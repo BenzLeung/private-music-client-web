@@ -58,8 +58,8 @@ class ProgressSlider extends Component {
                     <Slider
                         min={0}
                         max={this.props.totalTime}
-                        onBeforeChange={this.handleBeforeChange}
-                        onAfterChange={this.handleAfterChange}
+                        onBeforeChange={this.handleBeforeChange.bind(this)}
+                        onAfterChange={this.handleAfterChange.bind(this)}
                     />
                 </div>
             );
@@ -69,8 +69,8 @@ class ProgressSlider extends Component {
                     <Slider
                         min={0}
                         max={this.props.totalTime}
-                        onBeforeChange={this.handleBeforeChange}
-                        onAfterChange={this.handleAfterChange}
+                        onBeforeChange={this.handleBeforeChange.bind(this)}
+                        onAfterChange={this.handleAfterChange.bind(this)}
                         value={this.state.currentTime}
                     />
                 </div>

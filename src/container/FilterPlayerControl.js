@@ -13,12 +13,23 @@ import { togglePlayPause } from '../redux/actions'
 import PlayerControl from '../presentation/PlayerControl/PlayerControl'
 
 const mapStateToProps = (state) => {
-    return state;
+    return {
+        status: state.status
+    };
 };
 
 const mapDispatchToProps = {
     onClickPlayPause: togglePlayPause
 };
+
+/*
+// 记一下另一种写法
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    onClickPlayPause: () => {
+        dispatch(togglePlayPause())
+    }
+});
+*/
 
 const FilterPlayerControl = connect(
     mapStateToProps,
