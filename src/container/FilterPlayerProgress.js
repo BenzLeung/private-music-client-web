@@ -1,5 +1,5 @@
 /**
- * @file
+ * @file 播放器进度条容器
  * @author BenzLeung(https://github.com/BenzLeung)
  * @date 2017/4/11
  * Created by JetBrains PhpStorm.

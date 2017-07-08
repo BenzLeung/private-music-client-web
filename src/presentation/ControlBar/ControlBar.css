@@ -17,3 +17,14 @@
     margin-right: 16rem;
     padding-top: 3.2rem;
 }
+
+.ControlBar .playModeColumn {
+    width: 16rem;
+    float: right;
+    padding-top: 3rem;
+}
+
+.ControlBar .playTimeColumn {
+    color: #fff;
+}
+

@@ -11,16 +11,22 @@
 import React from 'react';
 import './ControlBar.css';
 
-import PlayerControl from '../../container/FilterPlayerControl';
-import ProgressSlider from '../../container/FilterPlayerProgress';
+import FilterPlayerControl from '../../container/FilterPlayerControl';
+import FilterPlayerProgress from '../../container/FilterPlayerProgress';
+import FilterPlayerTime from '../../container/FilterPlayerTime';
 
 const ControlBar = () => (
     <div className="ControlBar">
         <div className="playCtrlColumn">
-            <PlayerControl />
+            <FilterPlayerControl />
+        </div>
+        <div className="playModeColumn">
+            <div className="playTimeColumn">
+                <FilterPlayerTime />
+            </div>
         </div>
         <div className="playProgressColumn">
-            <ProgressSlider />
+            <FilterPlayerProgress />
         </div>
     </div>
 );

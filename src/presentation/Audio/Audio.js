@@ -1,5 +1,5 @@
 /**
- * @file
+ * @file audio标签控制
  * @author BenzLeung(https://github.com/BenzLeung)
  * @date 2017/7/3
  * Created by JetBrains PhpStorm.
@@ -35,13 +35,14 @@ class Audio extends Component {
 
     setTime(t) {
         this.refs['audioNode'].currentTime = t;
+        this.handleProgress();
     }
 
     startTimer() {
         if (this.progressTimer) return;
         this.progressTimer = setInterval(() => {
             this.handleProgress();
-        }, 800);
+        }, 100);
     }
 
     stopTimer() {
