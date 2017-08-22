@@ -15,26 +15,58 @@ class Audio extends Component {
     constructor(props) {
         super(props);
         this.onProgress = props.onProgress;
+        this.onEnded = props.onEnded;
+        this.onStateChanged = props.onStateChanged;
         this.progressTimer = 0;
     }
 
+    setAudioNode(node) {
+        this.audioNode = this.audioNode || null;
+        if (node && node !== this.audioNode) {
+            node.addEventListener('ended', this.handleEnded.bind(this), false);
+            node.addEventListener('playing', this.handleStatePlaying.bind(this), false);
+            node.addEventListener('pause', this.handleStatePaused.bind(this), false);
+            node.addEventListener('timeupdate', this.handleProgress.bind(this), false);
+            this.audioNode = node;
+        }
+    }
+
     handleProgress() {
-        let a = this.refs['audioNode'];
+        let a = this.audioNode;
         let currentTime = a.currentTime;
         let totalTime = a.duration;
         this.onProgress(currentTime, totalTime);
     }
 
+    handleEnded() {
+        this.onEnded();
+        console.log('Audio: ended');
+    }
+
+    handleStateChanged(newState) {
+        this.onStateChanged(newState);
+    }
+
+    handleStatePlaying() {
+        this.handleStateChanged('play');
+        console.log('Audio: play');
+    }
+    handleStatePaused() {
+        this.handleStateChanged('pause');
+        console.log('Audio: pause');
+    }
+
+
     play() {
-        this.refs['audioNode'].play();
+        this.audioNode.play();
     }
 
     pause() {
-        this.refs['audioNode'].pause();
+        this.audioNode.pause();
     }
 
     setTime(t) {
-        this.refs['audioNode'].currentTime = t;
+        this.audioNode.currentTime = t;
         this.handleProgress();
     }
 
@@ -50,9 +82,9 @@ class Audio extends Component {
         this.progressTimer = 0;
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
         this.startTimer();
-    }
+    }*/
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.startTime !== this.props.startTime) {
@@ -76,7 +108,7 @@ class Audio extends Component {
     render() {
         return (
             <div className="audio">
-                <audio ref="audioNode" src={this.props.src} />
+                <audio ref={(a) => {this.setAudioNode(a);}} src={this.props.src} />
             </div>
         );
     }

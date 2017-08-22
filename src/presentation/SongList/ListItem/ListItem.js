@@ -13,8 +13,10 @@ import './ListItem.css';
 
 const ListItem = ({songInfo}) => (
     <div className="ListItem">
-        <div className="li-title">{(songInfo['title'] || '-')}</div>
-        <div className="li-artist">{(songInfo['artist'] || '-')}</div>
-        <div className="li-album">{(songInfo['album'] || '-')}</div>
+        <div className="li-cell li-title">{(songInfo['title'] || '-')}</div>
+        <div className="li-cell li-artist">{(songInfo['artist'] || '-')}</div>
+        <div className="li-cell li-album">{(songInfo['album'] || '-')}</div>
     </div>
 );
+
+export default ListItem;

@@ -1,0 +1,29 @@
+.ListItem {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 100%;
+    padding: 0 2rem;
+}
+
+.ListItem .li-cell {
+    margin: 0 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ListItem .li-title {
+    flex-basis: 50%;
+}
+
+.ListItem .li-artist {
+    flex-basis: 25%;
+}
+
+.ListItem .li-album {
+    flex-basis: 25%;
+}
+

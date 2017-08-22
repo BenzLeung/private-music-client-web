@@ -7,19 +7,19 @@
 }
 
 .ControlBar .playCtrlColumn {
-    width: 28rem;
+    width: 20rem;
     float: left;
     padding-top: 3rem;
 }
 
 .ControlBar .playProgressColumn {
-    margin-left: 28rem;
+    margin-left: 20rem;
     margin-right: 16rem;
     padding-top: 3.2rem;
 }
 
 .ControlBar .playModeColumn {
-    width: 16rem;
+    width: 15rem;
     float: right;
     padding-top: 3rem;
 }

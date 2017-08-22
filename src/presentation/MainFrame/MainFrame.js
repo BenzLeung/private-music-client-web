@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import 'MainFrame.css';
+import './MainFrame.css';
 import FilterSongList from '../../container/FilterSongList';
 
 const MainFrame = () => (

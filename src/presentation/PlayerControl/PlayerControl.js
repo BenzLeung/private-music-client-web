@@ -10,10 +10,10 @@
 
 import React from 'react';
 
-const PlayerControl = ({onClickPlayPause}) => (
+const PlayerControl = ({onClickPlayPause, status}) => (
     <div className="PlayerControl">
         <button>上一曲</button>
-        <button onClick={onClickPlayPause}>播放</button>
+        <button onClick={onClickPlayPause}>{status === 'play' ? '暂停' : '播放'}</button>
         <button>下一曲</button>
     </div>
 );

@@ -8,9 +8,8 @@
  * each engineer has a duty to keep the code elegant
  */
 
-import React from 'react';
 import { connect } from 'react-redux';
-import { setSong } from '../redux/actions';
+import {fetchSongList, setSong} from '../redux/actions';
 import SongList from '../presentation/SongList/SongList';
 
 
@@ -22,7 +21,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    onSetSong: setSong
+    onSetSong: setSong,
+    refreshList: fetchSongList
 };
 
 const FilterSongList = connect(

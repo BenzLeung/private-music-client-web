@@ -1,0 +1,21 @@
+.SongListOuter {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.SongListInner {
+    position: relative;
+    width: 100%;
+}
+
+.SongListInner ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.SongListInner .songItem {
+    list-style: none;
+    position: absolute;
+    width: 100%;
+}

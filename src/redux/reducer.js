@@ -10,7 +10,7 @@
 
 const initState = {
     // 服务器
-    'server' : 'http://192.168.199.240:32767',
+    'server' : '',
 
     // 播放
     'url' : 'testMusic/A-Little-Love.mp3',
@@ -37,7 +37,28 @@ const initState = {
     'isFetchingList' : false,
     'listErrorMsg' : '',
     'currentIndex' : 0,
-    'songList' : []
+    'songList' : [
+        {
+            title: "A Little Love",
+            artist: "冯曦妤",
+            album: "A Little Love",
+            format: "mp3",
+            bitrate: 320000,
+            duration: 189,
+            filename: "A Little Love - 冯曦妤.mp3",
+            filesize: 7593422
+        },
+        {
+            title: "迷迭香",
+            artist: "周杰伦",
+            album: "依然范特西",
+            format: "mp3",
+            bitrate: 48000,
+            duration: 252,
+            filename: "迷迭香 - 周杰伦.mp3",
+            filesize: 10130943
+        }
+    ]
 };
 
 export default (state = initState, action) => {
@@ -45,14 +66,17 @@ export default (state = initState, action) => {
 
         case 'TOGGLE_PLAY_PAUSE':
             return Object.assign({}, state, {
+                // todo: 加入状态机限制
                 'status': (state['status'] === 'play') ? 'pause' : 'play'
             });
         case 'PLAY':
             return Object.assign({}, state, {
+                // todo: 加入状态机限制
                 'status': 'play'
             });
         case 'PAUSE':
             return Object.assign({}, state, {
+                // todo: 加入状态机限制
                 'status': 'pause'
             });
         case 'PROGRESS':
@@ -64,10 +88,33 @@ export default (state = initState, action) => {
             return Object.assign({}, state, {
                 'startTime': action['startTime']
             });
+        case 'CHANGE_PLAY_STATE':
+            if (action['newStatus'] === state['status']) {
+                return state;
+            }
+            return Object.assign({}, state, {
+                'status': action['newStatus']
+            });
 
-        // todo: 歌曲信息拉取
+        // 歌曲信息拉取
+        case 'FETCH_SONG_INFO':
+            return Object.assign({}, state, {
+                'isFetchingInfo': true,
+                'infoErrorMsg' : ''
+            });
+        case 'FETCH_SONG_INFO_SUCCESS':
+            return Object.assign({}, state, {
+                'isFetchingInfo': false,
+                'infoErrorMsg': '',
+                'songInfo': action['info']
+            });
+        case 'FETCH_SONG_INFO_FAILURE':
+            return Object.assign({}, state, {
+                'isFetchingInfo': false,
+                'infoErrorMsg': action['error']
+            });
 
-        // todo: 列表控制
+        // 列表拉取
         case 'FETCH_LIST':
             return Object.assign({}, state, {
                 'isFetchingList': true,
@@ -84,6 +131,9 @@ export default (state = initState, action) => {
                 'isFetchingList': false,
                 'listErrorMsg': action['error']
             });
+
+        // todo: 列表控制
+
 
         default:
             if (typeof state === 'undefined') {

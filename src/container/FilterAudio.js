@@ -9,7 +9,7 @@
  */
 
 import { connect } from 'react-redux'
-import { progress } from '../redux/actions'
+import { progress, autoNextSong, changePlayStatus } from '../redux/actions'
 import Audio from '../presentation/Audio/Audio'
 
 const mapStateToProps = (state) => {
@@ -21,8 +21,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    onProgress: progress
-    // todo: onEnded, onStateChanged
+    onProgress: progress,
+    onEnded: autoNextSong,
+    onStateChanged: changePlayStatus
 };
 
 const FilterAudio = connect(
