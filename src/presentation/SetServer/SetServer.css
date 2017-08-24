@@ -1,0 +1,43 @@
+.SetServer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+}
+
+.SetServer .mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.SetServer .dialog {
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+    background-color: #fcfcfc;
+    border: 0.1rem solid #333;
+    padding: 4rem 6rem;
+    max-width: 48rem;
+}
+
+.SetServer .dialog .text {
+    margin-bottom: 1rem;
+}
+
+.SetServer .dialog .urlBox {
+    margin-bottom: 1rem;
+}
+
+.SetServer .dialog .urlInput {
+    width: 100%;
+}
+
+.SetServer .dialog .submitButton {
+    text-align: center;
+}

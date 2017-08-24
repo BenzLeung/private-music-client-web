@@ -1,0 +1,41 @@
+.PlayerControl {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.PlayerControl .controlButton {
+    cursor: pointer;
+}
+
+.PlayerControl .controlButtonActive {
+    transform: scale(0.9);
+}
+
+.PlayerControl .back,
+.PlayerControl .next {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 1rem;
+}
+
+.PlayerControl .back img,
+.PlayerControl .next img {
+    width: 3rem;
+    height: 3rem;
+}
+
+
+.PlayerControl .playPause {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 1rem;
+}
+
+.PlayerControl .playPause img {
+    width: 5rem;
+    height: 5rem;
+}
+

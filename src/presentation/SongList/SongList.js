@@ -11,6 +11,7 @@
 import React, {Component} from 'react';
 import './SongList.css';
 import ListItem from './ListItem/ListItem';
+import {px2rem, rem2px} from "../../common/common";
 
 class SongList extends Component {
     constructor (props) {
@@ -24,16 +25,16 @@ class SongList extends Component {
     }
 
     componentDidMount() {
-        this.refreshList();
+        //this.refreshList();
     }
 
-    setOuterNodeRef(node) {
+    /*setOuterNodeRef(node) {
         this.outerNode = this.outerNode || null;
         if (node && this.outerNode !== node) {
             node.addEventListener('scroll', this.handleScroll2.bind(this), false);
             this.outerNode = node;
         }
-    }
+    }*/
 
     handleScroll2 () {
         if (!this.scrollTimeout) {
@@ -46,9 +47,7 @@ class SongList extends Component {
 
     handleScroll () {
         let t = this.outerNode.scrollTop;
-        let htmlDom = document.getElementsByTagName('html')[0];
-        let px2rem = parseInt(window.getComputedStyle(htmlDom).getPropertyValue('font-size'), 10);
-        let remTop = t / px2rem;
+        let remTop = px2rem(t);
         this.setState({
             scrollTop: remTop
         })
@@ -64,9 +63,7 @@ class SongList extends Component {
 
     calcItemCount () {
         let height = document.body.clientHeight;
-        let htmlDom = document.getElementsByTagName('html')[0];
-        let px2rem = parseInt(window.getComputedStyle(htmlDom).getPropertyValue('font-size'), 10);
-        let remHeight = height / px2rem;
+        let remHeight = px2rem(height);
 
         /*console.log({
             height,
@@ -79,27 +76,45 @@ class SongList extends Component {
         return Math.ceil(remHeight / this.ITEM_HEIGHT) + 2;
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (!this.outerNode) {return;}
+        let firstIndex = this.calcFirstIndex() + 2;
+        let itemCount = this.calcItemCount();
+        let lastIndex = firstIndex + itemCount - 5;
+        let oldCurIndex = this.props.currentIndex;
+        let newCurIndex = nextProps.currentIndex;
+
+        if (oldCurIndex !== newCurIndex
+            && (newCurIndex <= firstIndex || lastIndex <= newCurIndex)) {
+            let targetFirstIndex = newCurIndex - Math.floor(itemCount / 2 - 3);
+            if (targetFirstIndex <= 0) {
+                this.outerNode.scrollTop = 0;
+                return;
+            }
+            let targetRemScrollTop = targetFirstIndex * this.ITEM_HEIGHT;
+            this.outerNode.scrollTop = rem2px(targetRemScrollTop);
+        }
+    }
+
     render () {
         let firstIndex = this.calcFirstIndex();
         let itemCount = this.calcItemCount();
         let itemHeight = this.ITEM_HEIGHT;
 
         let songList = this.props['songList'];
-        let renderSongList = songList.slice(firstIndex, itemCount);
 
         let listHeight = songList.length * this.ITEM_HEIGHT;
 
-        console.log({
+        /*console.log({
             firstIndex,
             itemCount,
             itemHeight,
             songList,
-            renderSongList,
             listHeight
-        });
+        });*/
 
         return (
-            <div className="SongListOuter" ref={(o) => {this.setOuterNodeRef(o);}}>
+            <div className="SongListOuter" ref={(o) => {this.outerNode = o;}} onScroll={this.handleScroll2.bind(this)}>
                 <div className="SongListInner" style={{'height' : listHeight + 'rem'}}>
                     <ul>
                         {
@@ -111,8 +126,12 @@ class SongList extends Component {
                                     info = songList[i];
                                     if (info) {
                                         liArray[i % itemCount] = (
-                                            <li key={i % itemCount} className="songItem" style={{'top' : (i * itemHeight) + 'rem', 'height': itemHeight + 'rem'}}>
-                                                <ListItem songInfo={info} />
+                                            <li
+                                                key={i % itemCount}
+                                                className={'songItem ' + (i === this.props.currentIndex ? 'songItemCurrent ' : '') + (i % 2 ? 'songItemOdd ' : 'songItemEven ')}
+                                                style={{'top' : (i * itemHeight) + 'rem', 'height': itemHeight + 'rem'}}
+                                                >
+                                                    <ListItem songInfo={info} onSelect={() => {this.onSetSong(i)}} />
                                             </li>
                                         );
                                     }

@@ -11,9 +11,10 @@
 import React from 'react';
 import './TopBar.css';
 
-const TopBar = ({titleName}) => (
+const TopBar = ({titleName, subtitleName}) => (
     <div className="TopBar">
         <h1>{titleName}</h1>
+        <h2>{subtitleName}</h2>
     </div>
 );
 

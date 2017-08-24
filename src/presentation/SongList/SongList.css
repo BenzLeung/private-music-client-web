@@ -1,6 +1,7 @@
 .SongListOuter {
     height: 100%;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .SongListInner {
@@ -18,4 +19,27 @@
     list-style: none;
     position: absolute;
     width: 100%;
+    cursor: pointer;
+}
+
+/*.SongListInner .songItemOdd {
+    background-color: #fff;
+}
+
+.SongListInner .songItemEven {
+    background-color: #e0fdff;
+}*/
+
+.SongListInner .songItem:hover {
+    background-color: #e5f3ff;
+}
+
+.SongListInner .songItem:active {
+    background-color: #cce8ff;
+}
+
+.SongListInner .songItemCurrent,
+.SongListInner .songItemCurrent:hover,
+.SongListInner .songItemCurrent:active {
+    background-color: #cce8ff;
 }

@@ -9,14 +9,19 @@
  */
 
 import React from 'react';
+import Touchable from 'rc-touchable';
+import {second2time} from "../../../common/common";
 import './ListItem.css';
 
-const ListItem = ({songInfo}) => (
+const ListItem = ({songInfo, onSelect}) => (
+    <Touchable onPress={() => {onSelect()}} activeClassName="ListItemActive">
     <div className="ListItem">
         <div className="li-cell li-title">{(songInfo['title'] || '-')}</div>
         <div className="li-cell li-artist">{(songInfo['artist'] || '-')}</div>
         <div className="li-cell li-album">{(songInfo['album'] || '-')}</div>
+        <div className="li-cell li-duration">{(songInfo['duration'] ? second2time(songInfo['duration']) : '')}</div>
     </div>
+    </Touchable>
 );
 
 export default ListItem;

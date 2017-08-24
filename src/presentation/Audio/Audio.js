@@ -20,21 +20,10 @@ class Audio extends Component {
         this.progressTimer = 0;
     }
 
-    setAudioNode(node) {
-        this.audioNode = this.audioNode || null;
-        if (node && node !== this.audioNode) {
-            node.addEventListener('ended', this.handleEnded.bind(this), false);
-            node.addEventListener('playing', this.handleStatePlaying.bind(this), false);
-            node.addEventListener('pause', this.handleStatePaused.bind(this), false);
-            node.addEventListener('timeupdate', this.handleProgress.bind(this), false);
-            this.audioNode = node;
-        }
-    }
-
     handleProgress() {
         let a = this.audioNode;
         let currentTime = a.currentTime;
-        let totalTime = a.duration;
+        let totalTime = a.duration || 0;
         this.onProgress(currentTime, totalTime);
     }
 
@@ -86,12 +75,12 @@ class Audio extends Component {
         this.startTimer();
     }*/
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.startTime !== this.props.startTime) {
-            this.setTime(nextProps.startTime);
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.startTime !== prevProps.startTime) {
+            this.setTime(this.props.startTime);
         }
-        if (nextProps.status !== this.props.status) {
-            let s = nextProps.status;
+        if (this.props.status !== prevProps.status) {
+            let s = this.props.status;
             switch (s) {
                 case 'play':
                     this.play();
@@ -103,12 +92,21 @@ class Audio extends Component {
                     break;
             }
         }
+        if (this.props.src !== prevProps.src && this.props.status === 'play') {
+            this.play();
+        }
     }
 
     render() {
         return (
             <div className="audio">
-                <audio ref={(a) => {this.setAudioNode(a);}} src={this.props.src} />
+                <audio
+                    ref={(a) => {this.audioNode = a;}}
+                    src={this.props.src}
+                    onEnded={this.handleEnded.bind(this)}
+                    onPlaying={this.handleStatePlaying.bind(this)}
+                    onPause={this.handleStatePaused.bind(this)}
+                    onTimeUpdate={this.handleProgress.bind(this)} />
             </div>
         );
     }

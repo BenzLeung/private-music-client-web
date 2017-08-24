@@ -9,12 +9,30 @@
  */
 
 import React from 'react';
+import Touchable from 'rc-touchable';
+import BackSvg from './images/back.svg';
+import NextSvg from './images/next.svg';
+import PlaySvg from './images/play.svg';
+import PauseSvg from './images/pause.svg';
+import './PlayerControl.css';
 
-const PlayerControl = ({onClickPlayPause, status}) => (
+const PlayerControl = ({onPrev, onNext, onClickPlayPause, status}) => (
     <div className="PlayerControl">
-        <button>上一曲</button>
-        <button onClick={onClickPlayPause}>{status === 'play' ? '暂停' : '播放'}</button>
-        <button>下一曲</button>
+        <Touchable onPress={onPrev} activeClassName="controlButtonActive">
+            <div className="controlButton back">
+                <img src={BackSvg} alt="上一曲"/>
+            </div>
+        </Touchable>
+        <Touchable onPress={onClickPlayPause} activeClassName="controlButtonActive">
+            <div className="controlButton playPause">
+                <img src={status === 'play' ? PauseSvg : PlaySvg} alt="播放暂停"/>
+            </div>
+        </Touchable>
+        <Touchable onPress={onNext} activeClassName="controlButtonActive">
+            <div className="controlButton next">
+                <img src={NextSvg} alt="下一曲"/>
+            </div>
+        </Touchable>
     </div>
 );
 

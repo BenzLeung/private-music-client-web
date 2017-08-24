@@ -1,0 +1,17 @@
+.PlayMode {
+    padding: 0 2rem;
+}
+
+.PlayMode .PlayModeButton,
+.PlayMode .PlayModeButton img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.PlayMode .PlayModeButton {
+    cursor: pointer;
+}
+
+.PlayMode .PlayModeButtonActive {
+    transform: scale(0.9);
+}

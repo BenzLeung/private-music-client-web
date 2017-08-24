@@ -9,7 +9,7 @@
  */
 
 import { connect } from 'react-redux'
-import { togglePlayPause } from '../redux/actions'
+import {nextSong, prevSong, togglePlayPause} from '../redux/actions'
 import PlayerControl from '../presentation/PlayerControl/PlayerControl'
 
 const mapStateToProps = (state) => {
@@ -19,7 +19,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    onClickPlayPause: togglePlayPause
+    onClickPlayPause: togglePlayPause,
+    onPrev: prevSong,
+    onNext: nextSong
 };
 
 /*

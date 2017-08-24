@@ -1,0 +1,27 @@
+.ProgressSliderOuter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.ProgressSliderOuter .currentTime,
+.ProgressSliderOuter .totalTime {
+    color: #fff;
+    width: 3em;
+    flex-shrink: 0;
+}
+
+.ProgressSliderOuter .currentTime {
+    text-align: left;
+    margin-right: 1rem;
+}
+
+.ProgressSliderOuter .totalTime {
+    text-align: right;
+    margin-left: 1rem;
+}
+
+.ProgressSliderOuter .ProgressSlider {
+    flex-basis: 100%;
+}

@@ -2,7 +2,7 @@ html {
     font-size: 10px;
 }
 
-html, body {
+html, body, #root {
     font-family: '微软雅黑', Tahoma, sans-serif;
     overflow: hidden;
     width: 100%;
@@ -12,4 +12,3 @@ html, body {
 body {
     font-size: 1.6rem;
 }
-

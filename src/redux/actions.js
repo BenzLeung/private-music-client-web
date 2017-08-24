@@ -8,6 +8,8 @@
  * each engineer has a duty to keep the code elegant
  */
 
+import fetchJsonp from 'fetch-jsonp';
+
 /*************************************************************/
 /* 播放控制 */
 
@@ -55,7 +57,55 @@ export function setSong(index) {
     return {type: 'SET_SONG', songIndex: index};
 }
 
+export function setPlayMode(mode) {
+    return {type: 'SET_PLAY_MODE', mode: mode};
+}
+
+export function togglePlayMode() {
+    return {type: 'TOGGLE_PLAY_MODE'};
+}
+
+function _fetchSongList(dispatch, getState) {
+    dispatch({
+        type: 'FETCH_LIST'
+    });
+    let state = getState();
+    let url = state['server'] + '/getMusicList';
+    return fetchJsonp(url, {
+        jsonpCallback: 'callback',
+        jsonpCallbackFunction: 'getMusicList'
+    }).then((response) => {
+        response.json().then((json) => {
+            dispatch({
+                type: 'FETCH_LIST_SUCCESS',
+                list: json
+            })
+        });
+        /*if (response.ok || response.status === 304) {
+            response.json().then((json) => {
+                dispatch({
+                    type: 'FETCH_LIST_SUCCESS',
+                    list: json
+                })
+            });
+        } else {
+            dispatch({
+                type: 'FETCH_LIST_FAILURE',
+                error: '' + response.status + ' ' + response.statusText
+            });
+        }*/
+    })
+}
+
 export function fetchSongList() {
+    return _fetchSongList;
+}
+
+
+/*************************************************************/
+/* 歌曲信息控制 */
+
+export function fetchSongInfo() {
     return function (dispatch, getState) {
         dispatch({
             type: 'FETCH_LIST'
@@ -85,4 +135,16 @@ export function fetchSongList() {
                 }*/
             })
     }
+}
+
+
+/*************************************************************/
+/* 服务器控制 */
+
+export function setServerUrl(url) {
+    return function (dispatch, getState) {
+        dispatch({type: 'SET_SERVER_URL', url: url});
+        _fetchSongList(dispatch, getState);
+    }
+    //return {type: 'SET_SERVER_URL', url: url}
 }

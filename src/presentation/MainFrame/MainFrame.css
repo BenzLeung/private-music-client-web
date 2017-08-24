@@ -1,8 +1,10 @@
 .MainFrame {
     position: absolute;
     top: 6rem;
-    bottom: 8rem;
+    /*bottom: 8rem;*/
+    bottom: 11rem;
     width: 100%;
+    overflow: hidden;
 }
 
 .MainFrame .SongListFrame {

@@ -13,20 +13,18 @@ import './ControlBar.css';
 
 import FilterPlayerControl from '../../container/FilterPlayerControl';
 import FilterPlayerProgress from '../../container/FilterPlayerProgress';
-import FilterPlayerTime from '../../container/FilterPlayerTime';
+import FilterPlayMode from '../../container/FilterPlayMode';
 
 const ControlBar = () => (
     <div className="ControlBar">
-        <div className="playCtrlColumn">
-            <FilterPlayerControl />
-        </div>
-        <div className="playModeColumn">
-            <div className="playTimeColumn">
-                <FilterPlayerTime />
-            </div>
-        </div>
         <div className="playProgressColumn">
             <FilterPlayerProgress />
+        </div>
+        <div className="playModeColumn">
+            <FilterPlayMode />
+        </div>
+        <div className="playCtrlColumn">
+            <FilterPlayerControl />
         </div>
     </div>
 );

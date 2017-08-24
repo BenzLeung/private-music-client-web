@@ -9,6 +9,9 @@
  */
 
 export const second2time = (seconds) => {
+    if (!seconds) {
+        return '00:00';
+    }
     let m = Math.floor(seconds / 60);
     let s = Math.floor(seconds % 60);
     let res = '';
@@ -22,4 +25,43 @@ export const second2time = (seconds) => {
     }
     res += (s + '');
     return res;
+};
+
+export const setCookie = (cName, value, expireDays) => {
+    let exDate = new Date();
+    exDate.setDate(exDate.getDate() + expireDays);
+    document.cookie = cName + '=' + encodeURIComponent(value)
+        + (expireDays ? '' : ';expires='+exDate.toUTCString());
+};
+
+export const getCookie = (cName) => {
+    if (document.cookie.length > 0) {
+        let cStart = document.cookie.indexOf(cName + "=");
+        if (cStart >= 0) {
+            cStart=cStart + cName.length + 1;
+            let cEnd = document.cookie.indexOf(";", cStart);
+            if (cEnd < 0) {
+                cEnd = document.cookie.length;
+            }
+            return decodeURIComponent(document.cookie.substring(cStart, cEnd));
+        }
+    }
+    return "";
+};
+
+let pxRemCache = 0;
+const getPxRemRate = () => {
+    if (!pxRemCache) {
+        let htmlDom = document.getElementsByTagName('html')[0];
+        pxRemCache = parseInt(window.getComputedStyle(htmlDom).getPropertyValue('font-size'), 10);
+    }
+    return pxRemCache;
+};
+
+export const px2rem = (px) => {
+    return px / getPxRemRate();
+};
+
+export const rem2px = (rem) => {
+    return rem * getPxRemRate();
 };

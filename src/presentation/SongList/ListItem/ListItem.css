@@ -1,5 +1,4 @@
 .ListItem {
-    display: -webkit-flex;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -8,8 +7,13 @@
     padding: 0 2rem;
 }
 
+.ListItemActive {
+    transform: scale(0.99);
+}
+
 .ListItem .li-cell {
     margin: 0 0.5rem;
+    line-height: 2;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -27,3 +31,7 @@
     flex-basis: 25%;
 }
 
+.ListItem .li-duration {
+    width: 4em;
+    text-align: right;
+}

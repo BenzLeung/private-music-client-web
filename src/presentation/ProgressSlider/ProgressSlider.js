@@ -9,9 +9,11 @@
  */
 
 import React, { Component } from 'react';
-
+import { second2time } from '../../common/common';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import './ProgressSlider.css';
+
 
 class ProgressSlider extends Component {
 
@@ -30,8 +32,13 @@ class ProgressSlider extends Component {
         });
     }
 
+    handleSliding(newTime) {
+        this.setState({
+            currentTime: newTime
+        });
+    }
+
     handleAfterChange(newTime) {
-        // todo: 把 newTime 传出去
         if (typeof this.onAfterDragged === 'function') {
             this.onAfterDragged(newTime);
         }
@@ -43,7 +50,7 @@ class ProgressSlider extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.currentTime !== this.props.currentTime) {
+        if (!this.state.isChanging && nextProps.currentTime !== this.props.currentTime) {
             this.setState({
                 currentTime: nextProps.currentTime
             });
@@ -54,25 +61,34 @@ class ProgressSlider extends Component {
         let div;
         if (this.state.isChanging) {
             div = (
-                <div className="ProgressSlider">
-                    <Slider
-                        min={0}
-                        max={this.props.totalTime}
-                        onBeforeChange={this.handleBeforeChange.bind(this)}
-                        onAfterChange={this.handleAfterChange.bind(this)}
-                    />
+                <div className="ProgressSliderOuter">
+                    <div className="currentTime">{second2time(this.state.currentTime)}</div>
+                    <div className="ProgressSlider">
+                        <Slider
+                            min={0}
+                            max={this.props.totalTime}
+                            onBeforeChange={this.handleBeforeChange.bind(this)}
+                            onChange={this.handleSliding.bind(this)}
+                            onAfterChange={this.handleAfterChange.bind(this)}
+                        />
+                    </div>
+                    <div className="totalTime">{second2time(this.props.totalTime)}</div>
                 </div>
             );
         } else {
             div = (
-                <div className="ProgressSlider">
-                    <Slider
-                        min={0}
-                        max={this.props.totalTime}
-                        onBeforeChange={this.handleBeforeChange.bind(this)}
-                        onAfterChange={this.handleAfterChange.bind(this)}
-                        value={this.state.currentTime}
-                    />
+                <div className="ProgressSliderOuter">
+                    <div className="currentTime">{second2time(this.state.currentTime)}</div>
+                    <div className="ProgressSlider">
+                        <Slider
+                            min={0}
+                            max={this.props.totalTime}
+                            onBeforeChange={this.handleBeforeChange.bind(this)}
+                            onAfterChange={this.handleAfterChange.bind(this)}
+                            value={this.state.currentTime}
+                        />
+                    </div>
+                    <div className="totalTime">{second2time(this.props.totalTime)}</div>
                 </div>
             );
         }

@@ -2,9 +2,11 @@
   "name": "private-music-client-web",
   "version": "0.1.0",
   "dependencies": {
+    "fetch-jsonp": "^1.1.1",
     "isomorphic-fetch": "latest",
     "normalize.css": "^7.0.0",
     "rc-slider": "^7.0.8",
+    "rc-touchable": "^1.2.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",

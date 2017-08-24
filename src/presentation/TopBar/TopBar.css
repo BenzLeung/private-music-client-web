@@ -3,11 +3,25 @@
     background: #333;
 }
 
-.TopBar h1 {
-    color: #fcfcfc;
-    font-size: 3rem;
+.TopBar h1,
+.TopBar h2 {
     text-align: center;
-    padding-top: 1.5rem;
     margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
+.TopBar h1 {
+    color: #fcfcfc;
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+}
+
+.TopBar h2 {
+    color: #ccc;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: normal;
+}
