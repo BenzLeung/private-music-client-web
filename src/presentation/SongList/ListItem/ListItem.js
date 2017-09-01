@@ -16,10 +16,20 @@ import './ListItem.css';
 const ListItem = ({songInfo, onSelect}) => (
     <Touchable onPress={() => {onSelect()}} activeClassName="ListItemActive">
     <div className="ListItem">
+        <div className="li-cell li-duration">{(songInfo['duration'] ? second2time(songInfo['duration']) : '')}</div>
+        <div className="li-cell-mix">
+            <div className="li-mix-title">{(songInfo['title'] || '-')}</div>
+            <div className="li-mix-sub">{(() => {
+                let subtitle = songInfo['artist'] || songInfo['album'] || '';
+                if (songInfo['artist'] && songInfo['album']) {
+                    subtitle = songInfo['artist'] + ' - ' + songInfo['album'];
+                }
+                return subtitle;
+            })()}</div>
+        </div>
         <div className="li-cell li-title">{(songInfo['title'] || '-')}</div>
         <div className="li-cell li-artist">{(songInfo['artist'] || '-')}</div>
         <div className="li-cell li-album">{(songInfo['album'] || '-')}</div>
-        <div className="li-cell li-duration">{(songInfo['duration'] ? second2time(songInfo['duration']) : '')}</div>
     </div>
     </Touchable>
 );

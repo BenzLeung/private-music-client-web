@@ -1,10 +1,6 @@
 .ListItem {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    height: 100%;
     padding: 0 2rem;
+    height: 100%;
 }
 
 .ListItemActive {
@@ -19,19 +15,80 @@
     text-overflow: ellipsis;
 }
 
-.ListItem .li-title {
-    flex-basis: 50%;
-}
-
-.ListItem .li-artist {
-    flex-basis: 25%;
-}
-
-.ListItem .li-album {
-    flex-basis: 25%;
-}
-
 .ListItem .li-duration {
     width: 4em;
     text-align: right;
+}
+
+@media screen and (min-width: 680px) {
+    .ListItem {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        height: 100%;
+    }
+
+    .ListItem .li-duration {
+        flex-shrink: 0;
+        order: 2;
+    }
+
+    .ListItem .li-cell-mix {
+        display: none;
+    }
+
+    .ListItem .li-title {
+        flex-basis: 50%;
+    }
+
+    .ListItem .li-artist {
+        flex-basis: 25%;
+    }
+
+    .ListItem .li-album {
+        flex-basis: 25%;
+    }
+}
+
+@media screen and (max-width: 680px) {
+
+    .ListItem {
+
+    }
+
+    .ListItem .li-duration {
+        float: right;
+        margin: 0;
+        padding-top: 1.2rem;
+    }
+
+    .ListItem .li-title,
+    .ListItem .li-artist,
+    .ListItem .li-album {
+        display: none;
+    }
+
+    .ListItem .li-cell-mix {
+        margin-right: 4.5em;
+        padding-top: 0.7rem;
+    }
+
+    .ListItem .li-cell-mix .li-mix-title,
+    .ListItem .li-cell-mix .li-mix-sub {
+        line-height: 1.5;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    }
+
+    .ListItem .li-cell-mix .li-mix-title {
+        font-size: 1.6rem;
+    }
+
+    .ListItem .li-cell-mix .li-mix-sub {
+        font-size: 1.4rem;
+        color: #888;
+    }
 }

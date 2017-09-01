@@ -7,6 +7,18 @@
     overflow: hidden;
 }
 
+@media screen and (min-width: 540px) {
+    .MainFrame {
+        bottom: 8rem;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .MainFrame {
+        bottom: 11rem;
+    }
+}
+
 .MainFrame .SongListFrame {
     position: relative;
     width: 100%;

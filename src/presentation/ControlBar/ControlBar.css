@@ -4,45 +4,50 @@
     background: #333;
     width: 100%;
 }
-/*
 
-.ControlBar {
-    height: 8rem;
-    display: flex;
+@media screen and (min-width: 540px) {
+
+    .ControlBar {
+        height: 8rem;
+        display: flex;
+    }
+
+    .ControlBar .playCtrlColumn {
+        height: 8rem;
+        padding: 0 1rem;
+        order: 1;
+    }
+
+    .ControlBar .playProgressColumn {
+        padding-top: 3.2rem;
+        flex-basis: 100%;
+        order: 2;
+    }
+
+    .ControlBar .playModeColumn {
+        padding-top: 2.9rem;
+        order: 3;
+    }
+
 }
 
-.ControlBar .playCtrlColumn {
-    height: 8rem;
-    padding: 0 1rem;
-    order: 1;
-}
 
-.ControlBar .playProgressColumn {
-    padding-top: 3.2rem;
-    flex-basis: 100%;
-    order: 2;
-}
+@media screen and (max-width: 540px) {
+    .ControlBar {
+        height: 11rem;
+    }
 
-.ControlBar .playModeColumn {
-    padding-top: 2.9rem;
-    order: 3;
-}
-*/
+    .ControlBar .playProgressColumn {
+        padding: 1.2rem 2rem 1.2rem;
+    }
 
-.ControlBar {
-    height: 11rem;
-}
+    .ControlBar .playCtrlColumn {
+        width: 22rem;
+        margin: 0 auto;
+    }
 
-.ControlBar .playProgressColumn {
-    padding: 1.2rem 2rem 1.2rem;
-}
-
-.ControlBar .playCtrlColumn {
-    width: 22rem;
-    margin: 0 auto;
-}
-
-.ControlBar .playModeColumn {
-    float: right;
-    margin-top: 1.5rem;
+    .ControlBar .playModeColumn {
+        float: right;
+        margin-top: 1.5rem;
+    }
 }
