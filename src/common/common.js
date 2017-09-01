@@ -65,3 +65,12 @@ export const px2rem = (px) => {
 export const rem2px = (rem) => {
     return rem * getPxRemRate();
 };
+
+export const filterUrl = (url) => {
+    let res = url.trim();
+    if (!res.match(/^(https?:)?\/\//)) {
+        res = 'http://' + res;
+    }
+    res = res.replace(/\/+$/, '');
+    return res;
+};

@@ -29,7 +29,6 @@ class Audio extends Component {
 
     handleEnded() {
         this.onEnded();
-        console.log('Audio: ended');
     }
 
     handleStateChanged(newState) {
@@ -38,11 +37,9 @@ class Audio extends Component {
 
     handleStatePlaying() {
         this.handleStateChanged('play');
-        console.log('Audio: play');
     }
     handleStatePaused() {
         this.handleStateChanged('pause');
-        console.log('Audio: pause');
     }
 
 
@@ -70,10 +67,6 @@ class Audio extends Component {
         clearInterval(this.progressTimer);
         this.progressTimer = 0;
     }
-
-    /*componentDidMount() {
-        this.startTimer();
-    }*/
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.startTime !== prevProps.startTime) {

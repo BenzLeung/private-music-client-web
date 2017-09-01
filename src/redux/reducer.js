@@ -21,6 +21,7 @@ const initState = {
     'startTime' : 0,
 
     // 歌曲
+    'needFetchInfo' : false,
     'isFetchingInfo' : false,
     'infoErrorMsg' : '',
     'songInfo' : null,
@@ -105,17 +106,20 @@ export default (state = initState, action) => {
         case 'FETCH_SONG_INFO':
             return Object.assign({}, state, {
                 'isFetchingInfo': true,
+                'needFetchInfo': false,
                 'infoErrorMsg' : ''
             });
         case 'FETCH_SONG_INFO_SUCCESS':
             return Object.assign({}, state, {
                 'isFetchingInfo': false,
+                'needFetchInfo': false,
                 'infoErrorMsg': '',
                 'songInfo': action['info']
             });
         case 'FETCH_SONG_INFO_FAILURE':
             return Object.assign({}, state, {
                 'isFetchingInfo': false,
+                'needFetchInfo': false,
                 'infoErrorMsg': action['error']
             });
 
@@ -150,7 +154,6 @@ export default (state = initState, action) => {
 
             switch (action['type']) {
 
-                // todo: 随机播放模式
                 case 'AUTO_NEXT_SONG':
                 case 'NEXT_SONG':
                     if (state.upNextArray.length) {
@@ -192,6 +195,7 @@ export default (state = initState, action) => {
                 'startTime' : 0,
 
                 // 歌曲信息
+                'needFetchInfo': true,
                 'songInfo': songInfo,
 
                 // 列表

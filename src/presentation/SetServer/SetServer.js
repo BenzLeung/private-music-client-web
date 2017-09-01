@@ -9,13 +9,14 @@
  */
 
 import React, { Component } from 'react';
-import {setCookie, getCookie} from "../../common/common";
+import {setCookie, getCookie, filterUrl} from "../../common/common";
 import './SetServer.css';
 
 class SetServer extends Component {
 
     submitUrl() {
         let url = this.urlInput.value;
+        url = filterUrl(url);
         this.props['onSubmitUrl'](url);
         setCookie('serverUrl', url, 365);
     }

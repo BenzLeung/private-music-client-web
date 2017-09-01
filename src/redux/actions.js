@@ -108,31 +108,21 @@ export function fetchSongList() {
 export function fetchSongInfo() {
     return function (dispatch, getState) {
         dispatch({
-            type: 'FETCH_LIST'
+            type: 'FETCH_SONG_INFO'
         });
         let state = getState();
-        let url = state['server'] + '/getMusicList';
-        return fetch(url)
-            .then((response) => {
+        let url = state['server'] + '/getMusicData?filename=' + encodeURIComponent(state['songInfo']['filename']);
+        return fetchJsonp(url, {
+            jsonpCallback: 'callback',
+            jsonpCallbackFunction: 'getMusicInfo'
+        }).then((response) => {
                 response.json().then((json) => {
                     dispatch({
-                        type: 'FETCH_LIST_SUCCESS',
-                        list: json
+                        type: 'FETCH_SONG_INFO_SUCCESS',
+                        info: json
                     })
                 });
-                /*if (response.ok || response.status === 304) {
-                    response.json().then((json) => {
-                        dispatch({
-                            type: 'FETCH_LIST_SUCCESS',
-                            list: json
-                        })
-                    });
-                } else {
-                    dispatch({
-                        type: 'FETCH_LIST_FAILURE',
-                        error: '' + response.status + ' ' + response.statusText
-                    });
-                }*/
+                // todo: 拉取失败
             })
     }
 }

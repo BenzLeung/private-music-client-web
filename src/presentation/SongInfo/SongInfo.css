@@ -1,0 +1,24 @@
+.SongInfo {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #666;
+}
+
+.SongInfo .AlbumCover {
+    height: 70%;
+    overflow: hidden;
+}
+
+.SongInfo .AlbumCover .img {
+    width: 80%;
+    height: 80%;
+    margin: 3rem auto 0;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.SongInfo .LyricsContainer {
+    height: 30%;
+}

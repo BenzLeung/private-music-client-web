@@ -11,11 +11,15 @@
 import React from 'react';
 import './MainFrame.css';
 import FilterSongList from '../../container/FilterSongList';
+import FilterSongInfo from '../../container/FilterSongInfo';
 
 const MainFrame = () => (
     <div className="MainFrame">
-        <div className="SongListFrame">
+        {/*<div className="SongListFrame">
             <FilterSongList />
+        </div>*/}
+        <div className="SongInfoFrame">
+            <FilterSongInfo />
         </div>
     </div>
 );
