@@ -1,3 +1,22 @@
 .Lyrics {
     color: #ccc;
+    overflow: hidden;
+    height: 100%;
+}
+
+.Lyrics ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.Lyrics .lrc {
+    padding: 1rem 2rem;
+}
+
+.Lyrics .lrcCurrent {
+    color: #57c5f7;
+    font-weight: bold;
 }

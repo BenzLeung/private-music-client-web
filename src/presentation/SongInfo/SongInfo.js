@@ -12,7 +12,7 @@ import React from 'react';
 import Lyrics from '../Lyrics/Lyrics';
 import './SongInfo.css';
 
-const SongInfo = ({info, isFetching, needFetch, onRefresh}) => {
+const SongInfo = ({info, isFetching, needFetch, playTime, onRefresh}) => {
     if (needFetch && !isFetching && (typeof onRefresh === 'function')) {
         onRefresh();
     }
@@ -22,7 +22,7 @@ const SongInfo = ({info, isFetching, needFetch, onRefresh}) => {
                 <div className="img" style={{backgroundImage: (info && info['cover'] ? 'url(' + info['cover'] + ')' : '')}} />
             </div>
             <div className="LyricsContainer">
-                <Lyrics content={(info && info['lrc'] ? info['lrc'] : '')} />
+                <Lyrics info={info} playTime={playTime}/>
             </div>
         </div>
     );

@@ -9,7 +9,7 @@ import App from './presentation/App/App';
 import 'normalize.css';
 import './index.css';
 
-let store = createStore(reducer, applyMiddleware(thunkMiddleware, loggerMiddleware));
+let store = createStore(reducer, applyMiddleware(thunkMiddleware/*, loggerMiddleware*/));
 
 ReactDOM.render(
     <Provider store={store}>

@@ -20,7 +20,7 @@
     text-align: right;
 }
 
-@media screen and (min-width: 680px) {
+@media screen and (min-width: 1134px) {
     .ListItem {
         display: flex;
         flex-direction: row;
@@ -51,7 +51,7 @@
     }
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 1134px) {
 
     .ListItem {
 

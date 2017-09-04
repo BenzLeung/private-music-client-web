@@ -15,9 +15,9 @@ import FilterSongInfo from '../../container/FilterSongInfo';
 
 const MainFrame = () => (
     <div className="MainFrame">
-        {/*<div className="SongListFrame">
+        <div className="SongListFrame">
             <FilterSongList />
-        </div>*/}
+        </div>
         <div className="SongInfoFrame">
             <FilterSongInfo />
         </div>

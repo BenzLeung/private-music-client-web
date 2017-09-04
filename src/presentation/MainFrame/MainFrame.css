@@ -19,13 +19,35 @@
     }
 }
 
-.MainFrame .SongListFrame {
-    position: relative;
-    width: 100%;
-    height: 100%;
+@media screen and (min-width: 680px) {
+    .MainFrame {
+        display: flex;
+    }
+
+    .MainFrame .SongListFrame {
+        width: 60%;
+    }
+
+    .MainFrame .SongInfoFrame {
+        width: 40%;
+    }
 }
 
-.MainFrame .SongInfoFrame {
-    width: 100%;
-    height: 100%;
+@media screen and (max-width: 680px) {
+    .MainFrame .SongListFrame,
+    .MainFrame .SongInfoFrame {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .MainFrame .SongListFrame {
+        z-index: 1;
+    }
+
+    .MainFrame .SongInfoFrame {
+        z-index: 2;
+    }
 }

@@ -17,7 +17,8 @@ const mapStateToProps = (state) => {
         info: state.songInfo,
         needFetch: state.needFetchInfo,
         isFetching: state.isFetchingInfo,
-        errorMsg: state.infoErrorMsg
+        errorMsg: state.infoErrorMsg,
+        playTime: state.currentTime
     };
 };
 
