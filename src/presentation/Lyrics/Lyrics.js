@@ -93,9 +93,33 @@ class Lyrics extends Component {
         return (idx - 1);
     }
 
+    animateScroll (targetScrollTop) {
+        if (this.animateScrolling) {
+            clearInterval(this.animateScrolling);
+            this.animateScrolling = 0;
+        }
+        if (targetScrollTop === 0) {
+            this.lyricsOuter.scrollTop = 0;
+            return;
+        }
+        let curScrollTop = this.lyricsOuter.scrollTop;
+        let remainFrame = 25;
+        let movePerFrame = (targetScrollTop - curScrollTop) / 25;
+        this.animateScrolling = setInterval(() => {
+            if (remainFrame <= 0) {
+                this.lyricsOuter.scrollTop = targetScrollTop;
+                clearInterval(this.animateScrolling);
+                this.animateScrolling = 0;
+            }
+            curScrollTop += movePerFrame;
+            this.lyricsOuter.scrollTop = curScrollTop;
+            remainFrame --;
+        }, 500 / 25);
+    }
+
     scrollToLine (line) {
         if (line < 0) {
-            this.lyricsOuter.scrollTop = 0;
+            this.animateScroll(0);
             return;
         }
         let ul = this.lyricsOuter.childNodes[0];
@@ -104,7 +128,7 @@ class Lyrics extends Component {
         let liHeight = curLi.clientHeight;
         let liTop = curLi.offsetTop;
         let scrollTop = Math.floor(liTop - (outerHeight / 2) + (liHeight / 2));
-        this.lyricsOuter.scrollTop = Math.max(scrollTop, 0);
+        this.animateScroll(Math.max(scrollTop, 0));
     }
 
     updateCurLine (newLine) {

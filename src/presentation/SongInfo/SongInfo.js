@@ -8,9 +8,35 @@
  * each engineer has a duty to keep the code elegant
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import Lyrics from '../Lyrics/Lyrics';
 import './SongInfo.css';
+
+class SongInfo extends Component {
+
+    componentDidUpdate () {
+        let {isFetching, needFetch, onRefresh} = this.props;;
+        if (needFetch && !isFetching && (typeof onRefresh === 'function')) {
+            onRefresh();
+        }
+
+    }
+
+    render () {
+        let {info, playTime} = this.props;
+        return (
+            <div className="SongInfo">
+                <div className="AlbumCover">
+                    <div className="img" style={{backgroundImage: (info && info['cover'] ? 'url(' + info['cover'] + ')' : '')}} />
+                </div>
+                <div className="LyricsContainer">
+                    <Lyrics info={info} playTime={playTime}/>
+                </div>
+            </div>
+        );
+    }
+}
+/*
 
 const SongInfo = ({info, isFetching, needFetch, playTime, onRefresh}) => {
     if (needFetch && !isFetching && (typeof onRefresh === 'function')) {
@@ -27,5 +53,6 @@ const SongInfo = ({info, isFetching, needFetch, playTime, onRefresh}) => {
         </div>
     );
 };
+*/
 
 export default SongInfo;

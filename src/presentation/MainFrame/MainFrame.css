@@ -25,11 +25,12 @@
     }
 
     .MainFrame .SongListFrame {
-        width: 60%;
+        flex-grow: 1;
     }
 
     .MainFrame .SongInfoFrame {
         width: 40%;
+        max-width: 40rem;
     }
 }
 

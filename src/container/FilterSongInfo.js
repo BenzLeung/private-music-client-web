@@ -14,6 +14,7 @@ import SongInfo from "../presentation/SongInfo/SongInfo";
 
 const mapStateToProps = (state) => {
     return {
+        showSongInfo: state.showSongInfo,
         info: state.songInfo,
         needFetch: state.needFetchInfo,
         isFetching: state.isFetchingInfo,

@@ -6,7 +6,7 @@
 .TopBar h1,
 .TopBar h2 {
     text-align: center;
-    margin: 0;
+    margin: 0 10rem;
     padding: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -24,4 +24,26 @@
     font-size: 1.5rem;
     line-height: 2rem;
     font-weight: normal;
+}
+
+.TopBar h2 a {
+    color: #57c5f7;
+}
+
+.TopBar .toggleSongInfoActive {
+    transform: scale(0.9);
+}
+
+.TopBar .toggleSongInfo {
+    float: right;
+    padding: 1.4rem 2rem;
+    cursor: pointer;
+}
+
+.TopBar .toggleSongInfoButton {
+    border: 0.1rem solid #fcfcfc;
+    color: #fcfcfc;
+    padding: 0.6rem;
+    border-radius: 0.4rem;
+    font-size: 1.6rem;
 }

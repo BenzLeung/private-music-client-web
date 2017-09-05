@@ -8,16 +8,17 @@
  * each engineer has a duty to keep the code elegant
  */
 
-import { connect } from 'react-redux'
-import TopBar from '../presentation/TopBar/TopBar'
+import { connect } from 'react-redux';
+import {toggleSongInfo} from '../redux/actions';
+import TopBar from '../presentation/TopBar/TopBar';
 
 
 const mapStateToProps = (state) => {
     let title = '私人音乐盒';
-    let subtitle = 'Benz Leung 倾情奉献';
+    let subtitle = '';
     if (state.songInfo) {
         title = state.songInfo['title'] || '私人音乐盒';
-        subtitle = state.songInfo['artist'] || state.songInfo['album'] || 'Benz Leung 倾情奉献';
+        subtitle = state.songInfo['artist'] || state.songInfo['album'] || '';
         if (state.songInfo['artist'] && state.songInfo['album']) {
             subtitle = state.songInfo['artist'] + ' - ' + state.songInfo['album'];
         }
@@ -28,7 +29,9 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+    onToggleSongInfo: toggleSongInfo
+};
 
 const FilterTopBar = connect(
     mapStateToProps,

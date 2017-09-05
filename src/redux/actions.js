@@ -127,6 +127,9 @@ export function fetchSongInfo() {
     }
 }
 
+export function toggleSongInfo() {
+    return {type: 'TOGGLE_SONG_INFO'};
+}
 
 /*************************************************************/
 /* 服务器控制 */

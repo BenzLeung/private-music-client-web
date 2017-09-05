@@ -25,6 +25,7 @@ const initState = {
     'isFetchingInfo' : false,
     'infoErrorMsg' : '',
     'songInfo' : null,
+    'showSongInfo' : false,
 
     // 列表
     'isFetchingList' : false,
@@ -224,6 +225,11 @@ export default (state = initState, action) => {
             return Object.assign({}, state, {
                 'playMode': newMode,
                 'upNextArray': (newMode === 2 ? makeShuffleList(state.currentIndex, state.songList.length) : [])
+            });
+
+        case 'TOGGLE_SONG_INFO':
+            return Object.assign({}, state, {
+                'showSongInfo': !state.showSongInfo
             });
 
 

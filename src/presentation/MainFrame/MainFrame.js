@@ -9,19 +9,32 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
 import './MainFrame.css';
 import FilterSongList from '../../container/FilterSongList';
 import FilterSongInfo from '../../container/FilterSongInfo';
 
-const MainFrame = () => (
+const MainFrame = ({showSongInfo}) => (
     <div className="MainFrame">
         <div className="SongListFrame">
             <FilterSongList />
         </div>
-        <div className="SongInfoFrame">
+        <div className="SongInfoFrame" style={{display: (showSongInfo ? '' : 'none')}}>
             <FilterSongInfo />
         </div>
     </div>
 );
 
-export default MainFrame;
+const mapStateToProps = (state) => {
+    return {
+        showSongInfo: state.showSongInfo
+    };
+};
+
+const FilterMainFrame = connect(
+    mapStateToProps,
+    {}
+)(MainFrame);
+
+
+export default FilterMainFrame;
