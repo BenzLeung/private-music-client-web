@@ -40,7 +40,7 @@ class ProgressSlider extends Component {
 
     handleAfterChange(newTime) {
         if (typeof this.onAfterDragged === 'function') {
-            this.onAfterDragged(newTime);
+            this.onAfterDragged(newTime / 100);
         }
 
         this.setState({
@@ -52,7 +52,7 @@ class ProgressSlider extends Component {
     componentWillReceiveProps(nextProps) {
         if (!this.state.isChanging && nextProps.currentTime !== this.props.currentTime) {
             this.setState({
-                currentTime: nextProps.currentTime
+                currentTime: nextProps.currentTime * 100
             });
         }
     }
@@ -62,11 +62,11 @@ class ProgressSlider extends Component {
         if (this.state.isChanging) {
             div = (
                 <div className="ProgressSliderOuter">
-                    <div className="currentTime">{second2time(this.state.currentTime)}</div>
+                    <div className="currentTime">{second2time(this.state.currentTime / 100)}</div>
                     <div className="ProgressSlider">
                         <Slider
                             min={0}
-                            max={this.props.totalTime}
+                            max={this.props.totalTime * 100}
                             onBeforeChange={this.handleBeforeChange.bind(this)}
                             onChange={this.handleSliding.bind(this)}
                             onAfterChange={this.handleAfterChange.bind(this)}
@@ -78,11 +78,11 @@ class ProgressSlider extends Component {
         } else {
             div = (
                 <div className="ProgressSliderOuter">
-                    <div className="currentTime">{second2time(this.state.currentTime)}</div>
+                    <div className="currentTime">{second2time(this.state.currentTime / 100)}</div>
                     <div className="ProgressSlider">
                         <Slider
                             min={0}
-                            max={this.props.totalTime}
+                            max={this.props.totalTime * 100}
                             onBeforeChange={this.handleBeforeChange.bind(this)}
                             onAfterChange={this.handleAfterChange.bind(this)}
                             value={this.state.currentTime}

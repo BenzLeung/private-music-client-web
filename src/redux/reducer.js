@@ -183,6 +183,9 @@ export default (state = initState, action) => {
                     break;
                 case 'SET_SONG':
                     curIndex = action['songIndex'];
+                    if (state['playMode'] === 2) {
+                        newUpNextArray = makeShuffleList(curIndex, state.songList.length)
+                    }
                     break;
                 default:
                     break;
